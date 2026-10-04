@@ -1,0 +1,44 @@
+# robots.txt para PsicobienestarP (https://psicobienestarp.com)
+# Permite indexación completa en buscadores e indexación en motores de IA
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /api/data/
+Disallow: /*.json$
+
+# Motores de Búsqueda Principales
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Rastreadores e Indexadores de Inteligencia Artificial (IA)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+# Mapa del Sitio
+Sitemap: https://psicobienestarp.com/sitemap.xml

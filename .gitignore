@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+bot whatsapp/node_modules/
+
+# Production builds
+dist/
+dist-ssr/
+
+# Environment Variables (CRITICAL: Never commit secrets to git)
+.env
+.env.*
+!.env.example
+bot whatsapp/.env
+
+# Large archives and temporary files
+*.rar
+*.zip
+*.tar.gz
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# IDE & OS files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db

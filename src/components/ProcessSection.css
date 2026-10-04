@@ -1,0 +1,90 @@
+/* Process Section Styles */
+.process-section {
+  background-color: #FFFFFF;
+}
+
+.process-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+}
+
+.process-step-card {
+  padding: 2.5rem 2rem;
+  background: var(--bg-page);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-smooth);
+}
+
+.process-step-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-teal);
+  box-shadow: var(--shadow-lg);
+  background: #FFFFFF;
+}
+
+.step-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.step-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--color-sage-light);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-big-num {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  font-weight: 500;
+  color: rgba(42, 102, 92, 0.15);
+}
+
+.process-step-card:hover .step-big-num {
+  color: var(--color-teal);
+}
+
+.step-card-title {
+  font-size: 1.3rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.85rem;
+}
+
+.step-card-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.process-cta-center {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .process-steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .process-steps-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+  }
+}

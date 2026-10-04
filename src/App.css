@@ -1,0 +1,13 @@
+/* App Root & Main Site Wrapper */
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: var(--font-sans);
+}
+
+.main-site-content {
+  padding-top: 98px; /* Altura total de la barra doble (34px top bar + 64px navbar) */
+  flex-grow: 1;
+}

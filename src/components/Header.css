@@ -1,0 +1,335 @@
+/* Header Styles - Dual Bar Layout (Top Email Bar + Main Navbar) */
+.header-wrapper-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  box-shadow: 0 4px 15px rgba(222, 107, 124, 0.15);
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.header-wrapper-fixed.header-hidden {
+  transform: translateY(-100%);
+}
+
+/* 1. Barra Superior con Dirección de Correo */
+.top-contact-bar {
+  height: 34px;
+  background-color: #DE6B7C;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  font-size: 0.825rem;
+}
+
+.top-contact-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+}
+
+.top-email-link {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 400;
+  transition: opacity var(--transition-fast);
+}
+
+.top-email-link:hover {
+  opacity: 0.9;
+}
+
+.top-instagram-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.8rem;
+  transition: opacity var(--transition-fast);
+}
+
+.top-instagram-link:hover {
+  opacity: 0.9;
+  text-decoration: underline;
+}
+
+.top-specialist-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #FFFFFF;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.top-specialist-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* 2. Barra de Navegación Principal */
+.main-navbar {
+  height: 64px;
+  background-color: #EAA5AC;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+}
+
+.navbar-logo-img {
+  width: 44px;
+  height: 44px;
+  max-width: 44px;
+  max-height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+}
+
+.navbar-brand-name {
+  font-family: var(--font-sans);
+  font-size: 1.35rem;
+  font-weight: 400; /* Quitar negrita */
+  color: #2D3748;
+  letter-spacing: -0.01em;
+}
+
+/* Nav Links */
+.navbar-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav-item-btn {
+  background: none;
+  border: none;
+  color: #2D3748;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 400; /* Quitar negrita */
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  padding: 0.35rem 0;
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.nav-item-btn:hover {
+  color: #922234;
+}
+
+.nav-item-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2.5px;
+  background: #922234;
+  transition: width var(--transition-smooth);
+}
+
+.nav-item-btn:hover::after {
+  width: 100%;
+}
+
+/* Actions */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-nav-agendar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #DE6B7C;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.5rem 1.15rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 400; /* Quitar negrita */
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 3px 10px rgba(222, 107, 124, 0.3);
+}
+
+.btn-nav-agendar:hover {
+  background: #C95567;
+  transform: translateY(-1px);
+}
+
+.navbar-burger-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #2D3748;
+  cursor: pointer;
+  padding: 0.3rem;
+}
+
+/* Mobile Drawer */
+.navbar-mobile-drawer {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.drawer-link {
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 400; /* Quitar negrita */
+  color: #2D3748;
+  padding: 0.45rem 0;
+  border-bottom: 1px dashed #F2D5D8;
+  cursor: pointer;
+}
+
+.drawer-link:hover {
+  color: #DE6B7C;
+}
+
+.drawer-footer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.btn-drawer-specialist {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #FAD8DC;
+  color: #922234;
+  border: 1px solid #F0D5D8;
+  padding: 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.drawer-instagram-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  background: rgba(222, 107, 124, 0.1);
+  color: var(--color-primary-dark);
+  border: 1px solid rgba(222, 107, 124, 0.2);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  transition: all var(--transition-fast);
+}
+
+.drawer-instagram-link:hover {
+  background: var(--color-primary);
+  color: #FFFFFF;
+}
+
+@media (max-width: 860px) {
+  .top-contact-bar {
+    height: auto;
+    min-height: 32px;
+    padding: 0.3rem 0;
+    font-size: 0.72rem;
+  }
+
+  .top-contact-container {
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0 0.75rem;
+  }
+
+  .top-email-link {
+    font-size: 0.72rem;
+  }
+
+  .top-instagram-link {
+    font-size: 0.72rem;
+  }
+
+  .main-navbar {
+    height: 70px;
+  }
+
+  .navbar-container {
+    padding: 0 1.25rem;
+  }
+
+  .navbar-brand {
+    gap: 0.75rem;
+  }
+
+  .navbar-logo-img {
+    width: 46px;
+    height: 46px;
+  }
+
+  .navbar-brand-name {
+    font-size: 1.35rem;
+  }
+
+  .navbar-burger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .navbar-nav-links,
+  .btn-nav-agendar {
+    display: none;
+  }
+}

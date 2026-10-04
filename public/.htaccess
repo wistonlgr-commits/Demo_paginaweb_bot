@@ -1,0 +1,38 @@
+# .htaccess - Configuración de Alto Rendimiento y Seguridad para SiteGround (PsicobienestarP)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. Proteger datos internos JSON de citas y rate limit
+  RewriteRule ^api/data/.*$ - [F,L]
+
+  # 2. Ruta limpia para la agenda dedicada
+  RewriteRule ^agenda/?$ agenda/index.html [L]
+
+  # 3. Si el archivo o carpeta existe físicamente, servirlo tal cual
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 4. Fallback SPA para la web principal
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Cabeceras de Seguridad y Control de Caché
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  
+  # Archivos HTML y APIs no deben guardarse en caché agresiva
+  <FilesMatch "\.(html|php)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+
+  # Assets estáticos inmutables (JS, CSS, fuentes, imágenes con hash)
+  <FilesMatch "\.(js|css|svg|png|jpg|jpeg|gif|webp|woff|woff2|ttf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>

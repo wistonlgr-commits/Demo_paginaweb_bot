@@ -1,0 +1,121 @@
+/* Services Section - Authentic PsicobienestarP */
+.services-section {
+  background-color: var(--bg-page);
+  position: relative;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.service-card {
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-smooth);
+  position: relative;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-primary);
+  box-shadow: 0 16px 36px rgba(222, 107, 124, 0.15);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.service-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--color-rose-soft);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-bounce);
+}
+
+.service-card:hover .service-icon-box {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  transform: scale(1.08) rotate(3deg);
+}
+
+.service-pill {
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  background: #FFF5F6;
+  color: var(--color-primary);
+  border: 1px solid rgba(222, 107, 124, 0.25);
+}
+
+.service-title {
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: #2D3748;
+  margin-bottom: 0.85rem;
+  line-height: 1.3;
+}
+
+.service-description {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.service-cta-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  transition: gap var(--transition-fast);
+}
+
+.service-cta-btn .arrow-icon {
+  transition: transform var(--transition-fast);
+}
+
+.service-card:hover .service-cta-btn {
+  color: var(--color-primary-dark);
+}
+
+.service-card:hover .service-cta-btn .arrow-icon {
+  transform: translateX(5px);
+}
+
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}

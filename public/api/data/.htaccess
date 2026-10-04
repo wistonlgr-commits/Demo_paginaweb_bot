@@ -1,0 +1,3 @@
+# Protección de datos de citas
+Order Deny,Allow
+Deny from all
