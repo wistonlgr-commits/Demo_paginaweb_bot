@@ -40,6 +40,8 @@ import {
   updatePinPassword,
   verifyPin,
   syncAppointmentsWithServer,
+  checkAuthSession,
+  signOut,
   ALL_HOURS,
   formatHour12,
   checkSlotConflict
@@ -159,9 +161,18 @@ export default function PsychologistDashboard({ isOpen, onClose, isStandalonePag
   };
 
   useEffect(() => {
-    if (isOpen) {
-      loadData();
-    }
+    const checkSession = async () => {
+      if (isOpen) {
+        const hasSession = await checkAuthSession();
+        if (hasSession) {
+          setIsAuthenticated(true);
+          loadData();
+        } else {
+          setIsAuthenticated(false);
+        }
+      }
+    };
+    checkSession();
   }, [isOpen]);
 
   // Polling automático cada 8 segundos si está autenticado para ver citas nuevas en tiempo real
@@ -317,8 +328,8 @@ export default function PsychologistDashboard({ isOpen, onClose, isStandalonePag
   };
 
   const handleUpdatePin = async () => {
-    if (!newPin.trim() || newPin.trim().length < 4) {
-      alert('La contraseña debe tener al menos 4 caracteres.');
+    if (!newPin.trim() || newPin.trim().length < 6) {
+      alert('La contraseña debe tener al menos 6 caracteres.');
       return;
     }
     const updated = await updatePinPassword(newPin.trim());
@@ -649,7 +660,8 @@ export default function PsychologistDashboard({ isOpen, onClose, isStandalonePag
             </button>
 
             <button
-              onClick={() => {
+              onClick={async () => {
+                await signOut();
                 setIsAuthenticated(false);
                 setPinInput('');
               }}

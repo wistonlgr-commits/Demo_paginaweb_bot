@@ -119,22 +119,45 @@ export const updateSettings = (newSettings) => {
 };
 
 export const updatePinPassword = async (newPlainPin) => {
-  if (!newPlainPin || newPlainPin.trim().length < 4) return false;
-  const newHash = await hashPin(newPlainPin);
-  return updateSettings({ pinHash: newHash });
+  if (!newPlainPin || newPlainPin.trim().length < 6) return false;
+  try {
+    const { error } = await supabase.auth.updateUser({ password: newPlainPin.trim() });
+    if (error) {
+      console.error('[appointmentService] Error updating Supabase password:', error.message);
+      return false;
+    }
+    return true;
+  } catch (e) {
+    console.error('[appointmentService] Error updating PIN:', e);
+    return false;
+  }
 };
 
 export const verifyPin = async (inputPin) => {
   if (!inputPin) return false;
   try {
-    const inputHash = await hashPin(inputPin);
-    const settings = getSettings();
-    const targetHash = settings.pinHash || MASTER_PIN_HASH;
-    return inputHash === targetHash;
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: 'admin@psicobienestar.com',
+      password: inputPin.trim()
+    });
+    if (error) {
+      console.error('[appointmentService] Supabase Auth Error:', error.message);
+      return false;
+    }
+    return !!data.user;
   } catch (e) {
     console.error('[appointmentService] Error verifying PIN:', e);
     return false;
   }
+};
+
+export const checkAuthSession = async () => {
+  const { data: { session } } = await supabase.auth.getSession();
+  return !!session;
+};
+
+export const signOut = async () => {
+  await supabase.auth.signOut();
 };
 
 // ==========================================
